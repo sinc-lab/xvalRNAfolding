@@ -19,19 +19,19 @@ All validation strategies are applied to state-of-the-art methods for RNA second
 
 **d)** sim-fold: several groups of increasing sequence simlarity are built; then, inside each group of controlled similarity, many random train/test folds can be sampled.
 
-## Reproducing results
+## Performance comparison for RNA secondary structure prediction methods according to different cross-validation strategies
+[This notebook](https://colab.research.google.com/github/sinc-lab/revisiting_crossval_rnafolding/blob/main/src/Figure_2_and_4_Methods_performance_comparisons.ipynb) shows the performance comparison among different cross-validation strategies
 
-### Performance comparison on RNA folding
-[This notebook](https://colab.research.google.com/github/sinc-lab/revisiting_crossval_rnafolding/blob/main/src/Figure_2_and_4_Methods_performance_comparisons.ipynb) shows the performance comparison among different cross-validation strategies that can be found in literature
+![](figures/FIG2.png)
 
-![](results/fig2v2.png)
+**a) k-fold**: (top) distribution of test-to-train structural distances of each fold; (bottom) median $F_1$ for each prediction method indicated with a different marker (DL prediction methods are depicted in blue, classical prediction methods are reported in red). $F_1$ for each tested sequence is scattered in the background. Gray bars show the proportion of test to train sequences in each fold. 
 
-<p align="center"> Performance comparison among existing cross-validation strategies. A) random $k$-fold; B) clustering fold; C) fam-fold. </p>
+**b) cluster-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. 
 
-![](results/fig4.png)
+**c) fam-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. 
 
-<p align="center"> Performance comparison of mean performance with 95% confidence interval in A) human learned fold; B) similarity fold.</p><br> <br>
+**d)** detailed analysis of connection distances for tmRNA family used in test set of fam-fold strategy: (top) distribution of distances between bases of canonical pairs in the reference structures of training (gray) and testing (blue) partitions, (bottom) distribution of connection distances distribution for canonical base pairs GU, AU and GC. 
 
-[This notebook](https://colab.research.google.com/github/sinc-lab/revisiting_crossval_rnafolding/blob/main/src/Figure_3_Distribution_canonical_connections_distances.ipynb) reproduces the comparison of distribution of canonical connections (GC, AU and GU) in 3 folds of the family fold.
+**e) hl-fold**: (top) test to train distance distributions; (bottom) median $F_1$ performance for each prediction method, with the 95\% confidence interval shaded behind each trend line. 
 
-![](results/fig3.png)
+**f) sim-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. wAUC: area under the performance curve for each method, weighted by the difficulty of the partition
