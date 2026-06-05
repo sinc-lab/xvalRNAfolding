@@ -27,7 +27,9 @@ All validation strategies are applied to state-of-the-art methods for RNA second
 
 ## Performance comparison for RNA secondary structure prediction methods according to different cross-validation strategies
 <div align="center">
+  
   ![](figures/FIG2.png)
+  
 </div>
 
 **a) k-fold**: (top) distribution of test-to-train structural distances of each fold; (bottom) median F1 for each prediction method indicated with a different marker (DL prediction methods in blue, classical prediction methods in red). Gray bars show the proportion of test to train sequences in each fold. 
