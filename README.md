@@ -32,13 +32,13 @@ All validation strategies are applied to state-of-the-art methods for RNA second
   
 </div>
 
-**a) k-fold**: (top) distribution of test-to-train structural distances of each fold; (bottom) median F1 for each prediction method indicated with a different marker (DL prediction methods in blue, classical prediction methods in red). Gray bars show the proportion of test to train sequences in each fold. 
+**a) k-fold**: (top) distribution of test-to-train structural distances of each fold; (bottom) median F1 for each prediction method (DL methods in blue, classical methods in red). Gray bars show the proportion of test to train sequences. 
 
 **b) cluster-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. 
 
 **c) fam-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. 
 
-**d)** detailed analysis of connection distances for tmRNA family used in test set of fam-fold strategy: (top) distribution of distances between bases of canonical pairs in the reference structures of training (gray) and testing (blue) partitions, (bottom) distribution of connection distances distribution for canonical base pairs GU, AU and GC. 
+**d)** analysis of connection distances for tmRNA family used in test set of fam-fold strategy: (top) distribution of distances between bases of canonical pairs in the reference structures of training (gray) and testing (blue) partitions, (bottom) distribution of connection distances distribution for canonical base pairs GU, AU and GC. 
 
 **e) hl-fold**: (top) test to train distance distributions; (bottom) median F1 performance for each prediction method, with the 95% confidence interval shaded behind each trend line. 
 
