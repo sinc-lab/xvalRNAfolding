@@ -11,7 +11,7 @@ All validation strategies are applied to state-of-the-art methods for RNA second
 ## Cross-validation methodologies for RNA secondary structure prediction revised
 ![](figures/FIG1.png)
 
-**a) Random k-fold**: (top) the complete dataset of RNA sequences is randomly divided into k groups, at each fold a group is used for testing (red) and the rest for training (gray). In **cluster-fold** (bottom), the complete dataset is split into clusters of similar sequences, for each fold a subset of them is assigned to the training set, and the rest is used for testing. 
+**a) random k-fold**: (top) the complete dataset of RNA sequences is randomly divided into k groups, at each fold a group is used for testing (red) and the rest for training (gray). In **cluster-fold** (bottom), the complete dataset is split into clusters of similar sequences, for each fold a subset of them is assigned to the training set, and the rest is used for testing. 
 
 **b) fam-fold**: the illustration has 6 structural families (triangles, lines, ovals, etc.). At each fold, one complete family is left out and used only for testing, while all the other families are used for training.
 
