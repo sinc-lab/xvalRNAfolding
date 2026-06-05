@@ -16,13 +16,13 @@ All validation strategies are applied to state-of-the-art methods for RNA second
 
 </div>
 
-**a) random k-fold**: (top) the complete dataset of RNA sequences is randomly divided into k groups, at each fold a group is used for testing (red) and the rest for training (gray). In **cluster-fold** (bottom), the complete dataset is split into clusters of similar sequences, for each fold a subset of them is assigned to the training set, and the rest is used for testing. 
+**a) random k-fold**: (top) the complete dataset is randomly divided into k groups, in a fold a group is used for testing (red) and the rest for training (gray). In **cluster-fold** (bottom), the complete dataset is split into clusters of similar sequences, in a fold a subset of them is assigned to the training set, and the rest is used for testing. 
 
-**b) fam-fold**: the illustration has 6 structural families (triangles, lines, ovals, etc.). At each fold, one complete family is left out and used only for testing, while all the other families are used for training.
+**b) fam-fold**: the illustration has 6 structural families (triangles, lines, etc.). At each fold, one complete family is left out and used only for testing, while all the others are used for training.
 
-**c) hl-fold**: each fold has in the training set all the sequences for which RNAfold obtained an F1>threshold, and the rest of the sequences are used for testing. Several thresholds are defined to build the folds. 
+**c) hl-fold**: each fold, in training, has all the sequences for which RNAfold obtained an F1>threshold, and the rest of the sequences are used for testing. Several thresholds define the folds. 
 
-**d) sim-fold**: several groups of increasing sequence simlarity are built, then inside each group of controlled similarity many random train/test folds can be sampled.
+**d) sim-fold**: groups of increasing sequence simlarity are built, then inside each group many random train/test folds can be sampled.
 
 
 ## Performance comparison for RNA secondary structure prediction methods according to different cross-validation strategies
