@@ -1,4 +1,4 @@
-# Revisiting homology-aware cross validations for RNA secondary structure prediction
+# Homology-aware cross-validation strategies for generalization assessment in RNA structure prediction
 
 This repository contains the data and source code for the manuscript *Homology-aware cross-validation strategies for generalization assessment in RNA structure prediction*, by L.A. Bugnon, G. Kulemeyer, M. Gerard, L. Di Persia, G. Stegmayer and D.H. Milone, 2026 (under review). Research Institute for Signals, Systems and Computational Intelligence, [sinc(i)](https://sinc.unl.edu.ar/).
 
