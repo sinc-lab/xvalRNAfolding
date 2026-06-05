@@ -35,7 +35,7 @@ All validation strategies are applied to state-of-the-art methods for RNA second
 
 **f) sim-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. wAUC: area under the performance curve for each method, weighted by the difficulty of the partition
 
-[This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_dist_dist_git.ipynb) shows the train to test distance distributions of cross-validation each strategy.
+[This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_dist_dist_git.ipynb) shows the train-to-test structural distance distributions of each cross-validation strategy.
 
 [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_strips_plot_git.ipynb) shows performance comparison of prediction methods among different cross-validation strategies.
 
