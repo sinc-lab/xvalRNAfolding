@@ -16,7 +16,9 @@ All validation strategies are applied to state-of-the-art methods for RNA second
 
 </div>
 
-**a) random k-fold**: (top) the complete dataset is randomly divided into k groups, in a fold a group is used for testing (red) and the rest for training (gray). In **cluster-fold** (bottom), the complete dataset is split into clusters of similar sequences, in a fold a subset of them is assigned to the training set, and the rest is used for testing. 
+**a)** Random **k-fold**: (top) the complete dataset is randomly divided into k groups, in a fold a group is used for testing (red) and the rest for training (gray). 
+
+In **cluster-fold** (bottom), the complete dataset is split into clusters of similar sequences, in a fold a subset of them is assigned to the training set, and the rest is used for testing. 
 
 **b) fam-fold**: the illustration has 6 structural families (triangles, lines, etc.). At each fold, one complete family is left out and used only for testing, while all the others are used for training.
 
@@ -38,16 +40,17 @@ All validation strategies are applied to state-of-the-art methods for RNA second
 
 **c) fam-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. 
 
-**d)** analysis of connection distances for tmRNA family used in test set of fam-fold strategy: (top) distribution of distances between bases of canonical pairs in the reference structures of training (gray) and testing (blue) partitions, (bottom) distribution of connection distances distribution for canonical base pairs GU, AU and GC. 
+**d)** Analysis of connection distances for tmRNA family used in test set of fam-fold strategy: (top) distribution of distances between bases of canonical pairs in the reference structures of training (gray) and testing (blue) partitions, (bottom) distribution of connection distances distribution for canonical base pairs GU, AU and GC. 
 
 **e) hl-fold**: (top) test to train distance distributions; (bottom) median F1 performance for each prediction method, with the 95% confidence interval shaded behind each trend line. 
 
 **f) sim-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. wAUC: area under the performance curve for each method, weighted by the difficulty of the partition.
 
+## Reproducible research
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_dist_dist.ipynb) shows the train-to-test structural distance distributions of each cross-validation strategy. 
 
-[This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_dist_dist.ipynb) shows the train-to-test structural distance distributions of each cross-validation strategy. [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_connections_dist.ipynb) plots the total train and test connections and the detail of fold base pairs for the tmRNA family.
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_strips_save_data.ipynb) processes method predictions and generates a summary of performances. 
 
-[This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_strips_save_data.ipynb) processes method predictions and generates a summary of performance. 
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_strips_plot.ipynb) shows performance comparison of prediction methods among different cross-validation strategies.
 
-[This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_strips_plot.ipynb) shows performance comparison of prediction methods among different cross-validation strategies.
-
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_connections_dist.ipynb) plots the distribution of train and test connection distances, and the detail for base pairs GU, AU and GC in tmRNA family.
