@@ -22,7 +22,7 @@ In **cluster-fold** (bottom), the complete dataset is split into clusters of sim
 
 **b) fam-fold**: the illustration has 6 structural families (triangles, lines, etc.). At each fold, one complete family is left out and used only for testing, while all the others are used for training.
 
-**c) hl-fold**: each fold, in training, has all the sequences for which RNAfold obtained an F1>threshold, and the rest of the sequences are used for testing. Several thresholds define the folds. 
+**c) hl-fold**: each fold, in training, has all the sequences for which the mean F1 of four classical methods (RNAfold, RNAstructure, LinearFold and LinearPartition) is above a threshold, and the rest of the sequences are used for testing. Several thresholds define the folds. 
 
 **d) sim-fold**: groups of increasing sequence simlarity are built, then inside each group many random train/test folds can be sampled.
 
@@ -46,11 +46,33 @@ In **cluster-fold** (bottom), the complete dataset is split into clusters of sim
 
 **f) sim-fold**: (top) test-to-train distance distributions; (bottom) structure prediction performance. wAUC: area under the performance curve for each method, weighted by the difficulty of the partition.
 
+## Data
+
+`data/` has one folder per dataset, with the sequences and structures (`<dataset>.csv`) and one split file per cross-validation strategy. Each split file lists, for every fold, the partition (`train`, `valid` or `test`) of each sequence `id`; sim-fold has one file per similarity threshold.
+
+The all-vs-all distance matrices can be download into `data/<dataset>/distances/`:
+
+| File | Dataset | Content | Size |
+|---|---|---|---|
+| [seqsim_f_all.h5](https://drive.google.com/file/d/1qLPI9ePyUksuJ7eu3Q8PV-kIMhC5NXDC/view) | ArchiveII | sequence similarity (IDscore) | 127 MB |
+| [rnadist_f_all.h5](https://drive.google.com/file/d/1qVk5IRY8_JgVFIuPVZg4MCsYNVm-kNGe/view) | ArchiveII | structural distance | 127 MB |
+| [bprna_seqsim_full_ACGU.h5](https://drive.google.com/file/d/1YjRZgRwjp-MdpLjXdHaIEk62HbGIXS4r/view) | bpRNA | sequence similarity (IDscore) | 1.4 GB |
+| [bprna_rnadist_full.h5](https://drive.google.com/file/d/1jPHR_eBI6dB3CCCEjz7FbAVGiNxrujPV/view) | bpRNA | structural distance | 1.4 GB |
+
+The all-vs-all blastn identity tables of ArchiveII (`data/archiveII/distances/archiveII-blastn-allvall[-nofilter].tsv`) are built with `python src/check_split_leakage.py data/archiveII/clustering_folds_split.csv 80 [--no-filter]`.
+
 ## Reproducible research
 - [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_dist_dist.ipynb) shows the train-to-test structural distance distributions of each cross-validation strategy. 
 
-- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_strips_save_data.ipynb) processes method predictions and generates a summary of performances. 
-
-- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_strips_plot.ipynb) shows performance comparison of prediction methods among different cross-validation strategies.
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_strips_plot.ipynb) shows performance comparison of prediction methods among different cross-validation strategies. The per-sequence $F_1$ scores it plots are computed from `data/` and `predictions/` by `src/summaries.py` on first use and cached in `results/` (not part of the repository); `python src/summaries.py` builds them all at once.
 
 - [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_connections_dist.ipynb) plots the distribution of train and test connection distances, and the detail for base pairs GU, AU and GC in tmRNA family.
+
+Supplementary material:
+
+- Figures S1 and S2 (critical difference diagrams, stratified k-fold) and S7 (bpRNA) are made by the Figure 2 performance notebook above.
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_S3_cluster_analysis.ipynb): Figure S3, multi-threshold cluster-fold.
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_S5.ipynb): Figure S5, per-sequence correlations between methods.
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_S6.ipynb): Figure S6, per-sequence $F_1$ against the maximum similarity to the training set at sim90.
+- [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Tables_S1_S2_S3.ipynb): Tables S1, S2 and S3.
+
