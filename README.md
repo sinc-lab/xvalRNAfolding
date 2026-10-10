@@ -12,7 +12,7 @@ All validation strategies are applied to state-of-the-art methods for RNA second
 
 <div align="center">
   
-  ![](figures/FIG1_v2.png)
+  ![](figures/FIG1.png)
 
 </div>
 
