@@ -5,9 +5,25 @@ from tqdm import tqdm
 from Bio import pairwise2
 from pathlib import Path
 
-REPO_PATH = Path("/home/gkulemeyer/Documents/Repos/RNA-analysis/DataAnalysis/bpRNA") 
-OUT_PATH = REPO_PATH / "chunks"
+DATA_PATH = Path("../../../../data/bpRNA/") 
+df = pd.read_csv(DATA_PATH / "bpRNA.csv", index_col="id") 
+OUT_PATH = DATA_PATH / "chunks"
+
+# this is the number of sequences in each chunk, obtained in the notebook compute_sequnce_similarity 
 CHUNKS = [0, 553, 1124, 1714, 2326, 2962, 3625, 4319, 5049, 5820, 6641, 7524, 8483, 9544, 10749, 12178, 14040, 18535] 
+
+def valid_sequence_ids(df):
+    valid_ids = []
+    for i in range(len(df)):
+        save = True
+        for l in df.iloc[i].sequence:
+            if l not in ["A", "C", "G", "U"]: 
+                save = False
+        if save:
+            valid_ids.append(df.iloc[i].name)
+    print(f"Total IDs: {len(df)} , Valid IDs: {len(valid_ids)}")
+    df_valid = df.loc[valid_ids]
+    return df_valid
 
 def get_match_dict(symbols, Match, Mismatch): 
     match_dic = {}
@@ -67,8 +83,9 @@ def main():
     args = parser.parse_args()
     OUT_PATH.mkdir(exist_ok=True)
 
-    data_file = REPO_PATH / "bpRNA_ordered.csv"
+    data_file = DATA_PATH / "bpRNA.csv"
     df = pd.read_csv(data_file, index_col="id")
+    df = valid_sequence_ids(df)
 
     start = CHUNKS[args.chunk]
     end = CHUNKS[args.chunk + 1]
