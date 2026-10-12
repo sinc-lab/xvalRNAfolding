@@ -56,10 +56,11 @@ The all-vs-all distance matrices can be download into `data/<dataset>/distances/
 |---|---|---|---|
 | [seqsim_f_all.h5](https://drive.google.com/file/d/1qLPI9ePyUksuJ7eu3Q8PV-kIMhC5NXDC/view) | ArchiveII | sequence similarity (IDscore) | 127 MB |
 | [rnadist_f_all.h5](https://drive.google.com/file/d/1qVk5IRY8_JgVFIuPVZg4MCsYNVm-kNGe/view) | ArchiveII | structural distance | 127 MB |
+| [archiveII-blastn-allvall-nofilter.tsv](https://drive.google.com/file/d/1z3AOAutA0tsU16wnIrge6PhkByPk7IXj/view) | ArchiveII | blastn identity (all pairs) | 58 MB |
 | [bprna_seqsim_full_ACGU.h5](https://drive.google.com/file/d/1YjRZgRwjp-MdpLjXdHaIEk62HbGIXS4r/view) | bpRNA | sequence similarity (IDscore) | 1.4 GB |
 | [bprna_rnadist_full.h5](https://drive.google.com/file/d/1jPHR_eBI6dB3CCCEjz7FbAVGiNxrujPV/view) | bpRNA | structural distance | 1.4 GB |
 
-The all-vs-all blastn identity tables of ArchiveII (`data/archiveII/distances/archiveII-blastn-allvall[-nofilter].tsv`) are built with `python src/check_split_leakage.py data/archiveII/clustering_folds_split.csv 80 [--no-filter]`.
+The blastn identity table can also be rebuilt with `python src/check_split_leakage.py data/archiveII/clustering_folds_split.csv 80 --no-filter`.
 
 ## Reproducible research
 - [This notebook](https://colab.research.google.com/github/sinc-lab/xvalRNAfolding/blob/main/src/Figure_2_dist_dist.ipynb) shows the train-to-test structural distance distributions of each cross-validation strategy. 
