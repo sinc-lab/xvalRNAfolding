@@ -40,6 +40,9 @@ def write_fasta(df, path):
 
 def run_cdhit(fasta, th, cdhit_bin):
     out = WORK_DIR / f"archiveII-cdhit_{th:g}"
+    clstr = CLSTR_DIR / f"{out.name}.clstr"
+    if clstr.exists():
+        return clstr
     cmd = [
         cdhit_bin, "-i", str(fasta), "-o", str(out),
         "-c", f"{th:g}", "-T", "0", "-d", "100", "-g", "1",
@@ -47,7 +50,8 @@ def run_cdhit(fasta, th, cdhit_bin):
     res = subprocess.run(cmd, check=True, capture_output=True, text=True)
     with open(f"{out}.log", "w") as f:
         f.write(" ".join(cmd) + "\n\n" + res.stdout)
-    return Path(shutil.move(f"{out}.clstr", CLSTR_DIR / f"{out.name}.clstr"))
+    shutil.move(f"{out}.clstr", clstr)
+    return clstr
 
 
 def find_psi_script(name):

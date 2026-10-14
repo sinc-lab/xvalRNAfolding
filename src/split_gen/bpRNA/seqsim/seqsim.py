@@ -5,12 +5,11 @@ from tqdm import tqdm
 from Bio import pairwise2
 from pathlib import Path
 
-DATA_PATH = Path("../../../../data/bpRNA/") 
-df = pd.read_csv(DATA_PATH / "bpRNA.csv", index_col="id") 
-OUT_PATH = DATA_PATH / "chunks"
+DATA_PATH = Path(__file__).resolve().parents[4] / "data" / "bpRNA"
+OUT_PATH = DATA_PATH / "distances" / "chunks"  # merged by compute_sequence_similarity.ipynb
 
-# this is the number of sequences in each chunk, obtained in the notebook compute_sequnce_similarity 
-CHUNKS = [0, 553, 1124, 1714, 2326, 2962, 3625, 4319, 5049, 5820, 6641, 7524, 8483, 9544, 10749, 12178, 14040, 18535] 
+# first row of each chunk (and the number of sequences at the end), obtained in the notebook compute_sequence_similarity
+CHUNKS = [0, 553, 1124, 1714, 2326, 2962, 3625, 4319, 5049, 5820, 6641, 7524, 8483, 9544, 10749, 12178, 14040, 18537]
 
 def valid_sequence_ids(df):
     valid_ids = []
@@ -81,7 +80,7 @@ def main():
     parser = argparse.ArgumentParser() 
     parser.add_argument("--chunk", type=int, required=True)
     args = parser.parse_args()
-    OUT_PATH.mkdir(exist_ok=True)
+    OUT_PATH.mkdir(parents=True, exist_ok=True)
 
     data_file = DATA_PATH / "bpRNA.csv"
     df = pd.read_csv(data_file, index_col="id")
